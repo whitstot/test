@@ -1,4 +1,5 @@
 var path = require('path');
+//const webpack = require('webpack');
 
 module.exports = {
   entry: './js/index.js',
@@ -6,8 +7,16 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+
+
+  /*
+
+
+
+
   module: {
   	rules: [
+    /*
       {
         test: /\.txt$/,
         use: 'raw-loader'
@@ -40,6 +49,7 @@ module.exports = {
           }
         ]
       },
+      * /
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -49,8 +59,9 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-	  },
-	  {
+	    }
+      /*
+	    {
         test: /\.exec\.js$/,
         use: [ 'script-loader' ]
       },
@@ -68,9 +79,9 @@ module.exports = {
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
-      }
+      } * /
     ],
-    loaders: [
+    loaders: [ /*
       {
         test: /\.json$/,
         loader: 'json-loader'
@@ -79,15 +90,27 @@ module.exports = {
         test: /\.json5$/,
         loader: 'json5-loader'
       },
+
+
+       * /
+
+
       {
         test: /\.js$/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'env', 'react']
+          presets: ['es2015', 'react']
         }
       }
     ]
   },
+
+
+  */
+
+
+
+  //"plugins": ["transform-runtime"],
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
