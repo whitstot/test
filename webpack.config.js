@@ -1,5 +1,8 @@
 var path = require('path');
 //const webpack = require('webpack');
+//const json = require('./file.json');               //might need this in the future, possibly put in index.js?
+//const json = require('json-loader!./file.json');  //might need this in the future, possibly put in index.js? 
+//var React = require('react');                     //might need this later
 
 module.exports = {
   entry: './js/index.js',
@@ -7,27 +10,19 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-
-
-  /*
-
-
-
-
   module: {
   	rules: [
-    /*
+      {
+        test: /\.jsx$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['react', 'env']
+        }
+      },
       {
         test: /\.txt$/,
         use: 'raw-loader'
-      },
-      {
-        test: require.resolve('path/to/answer.js'),
-        use: [
-          {
-            loader: 'val-loader'
-          }
-        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -49,18 +44,6 @@ module.exports = {
           }
         ]
       },
-      * /
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-	    }
-      /*
 	    {
         test: /\.exec\.js$/,
         use: [ 'script-loader' ]
@@ -71,17 +54,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" }
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      } * /
+        use: ['style-loader', 'css-loader']
+      }
     ],
-    loaders: [ /*
+    loaders: [
       {
         test: /\.json$/,
         loader: 'json-loader'
@@ -90,29 +66,10 @@ module.exports = {
         test: /\.json5$/,
         loader: 'json5-loader'
       },
-
-
-       * /
-
-
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react']
-        }
-      }
     ]
   },
-
-
-  */
-
-
-
-  //"plugins": ["transform-runtime"],
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname),
     compress: true,
     port: 8080
   }
